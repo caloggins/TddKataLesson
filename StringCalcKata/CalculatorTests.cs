@@ -31,7 +31,8 @@ namespace StringCalcKata
 
             Action act = () => sut.Add("1,-2,3");
 
-            act.Should().Throw<NegativesNotAllowedException>();
+            act.Should().Throw<NegativesNotAllowedException>()
+                .WithMessage("Negative numbers not allowed. Found: -2.");
         }
     }
 
