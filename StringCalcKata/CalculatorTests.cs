@@ -26,6 +26,7 @@ namespace StringCalcKata
 
         [Theory]
         [InlineData("1,-2,3", "Negative numbers not allowed. Found: -2.")]
+        [InlineData("1,-2,-33", "Negative numbers not allowed. Found: -2, -33.")]
         public void ThrowsExceptionWhenNegativeExists(string input, string message)
         {
             var sut = new Calculator();
