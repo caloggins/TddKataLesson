@@ -6,6 +6,8 @@ namespace StringCalcKata
 {
     public class Calculator
     {
+        private readonly SumHandler sumHandler = new SumHandler();
+        
         public int Add(string input)
         {
             if (InputIsEmpty(input))
@@ -13,18 +15,9 @@ namespace StringCalcKata
 
             CheckForNegatives(input);
 
-            var numbers = GetNumbersFromTheString(input);
-
-            return numbers.Sum();
+            return sumHandler.Handle(input);
         }
-
-        private static IEnumerable<int> GetNumbersFromTheString(string input)
-        {
-            var numbers = Regex.Matches(input, @"\d+")
-                .Select(o => int.Parse(o.Value));
-            return numbers;
-        }
-
+        
         private static void CheckForNegatives(string input)
         {
             var matches = Regex.Matches(input, @"-\d+")
