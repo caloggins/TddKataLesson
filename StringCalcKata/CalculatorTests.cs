@@ -9,7 +9,8 @@ namespace StringCalcKata
         [InlineData("", 0)]
         [InlineData("1", 1)]
         [InlineData("1,2", 3)]
-        public void TestName(string input, int expected)
+        [InlineData("1,2,3", 6)]
+        public void ItReturnsTheCorrectResult(string input, int expected)
         {
             var sut = new Calculator();
 
