@@ -29,7 +29,7 @@ namespace StringCalcKata
             if (input == "")
                 return 0;
 
-            var sum = input.Split(',')
+            var sum = input.Split(',','\n')
                 .Select(int.Parse)
                 .Sum();
 
