@@ -25,7 +25,7 @@ namespace StringCalcKata
         }
 
         [Fact]
-        public void ThrowsExcecptionWhenNegativeExists()
+        public void ThrowsExceptionWhenNegativeExists()
         {
             var sut = new Calculator();
 
@@ -41,6 +41,10 @@ namespace StringCalcKata
         {
             if (input == "")
                 return 0;
+
+            var match = Regex.Match(input, @"-\d+");
+            if (match.Success)
+                throw new NegativesNotAllowedException();
 
             var numbers = Regex.Matches(input, @"\d+")
                 .Select(o => int.Parse(o.Value));
