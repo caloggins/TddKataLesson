@@ -42,7 +42,7 @@ namespace StringCalcKata
     {
         public int Add(string input)
         {
-            if (input == "")
+            if (InputIsEmpty(input))
                 return 0;
 
             var matches = Regex.Matches(input, @"-\d+")
@@ -58,6 +58,11 @@ namespace StringCalcKata
             var sum = numbers.Sum();
 
             return sum;
+        }
+
+        private static bool InputIsEmpty(string input)
+        {
+            return input == "";
         }
     }
 }
