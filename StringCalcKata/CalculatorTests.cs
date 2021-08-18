@@ -9,9 +9,9 @@ namespace StringCalcKata
         public void ItReturnsTheCorrectValue()
         {
             var sut = new Calculator();
-            
+
             var result = sut.Add("");
-            
+
             result.Should().Be(0);
         }
 
@@ -30,7 +30,10 @@ namespace StringCalcKata
     {
         public int Add(string input)
         {
-            return 0;
+            if (input == "")
+                return 0;
+
+            return 1;
         }
     }
 }
