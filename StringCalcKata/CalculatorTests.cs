@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using FluentAssertions;
 using Xunit;
@@ -21,6 +22,16 @@ namespace StringCalcKata
             var result = sut.Add(input);
 
             result.Should().Be(expected);
+        }
+
+        [Fact]
+        public void ThrowsExcecptionWhenNegativeExists()
+        {
+            var sut = new Calculator();
+
+            Action act = () => sut.Add("1,-2,3");
+
+            act.Should().Throw<NegativesNotAllowedException>();
         }
     }
 
