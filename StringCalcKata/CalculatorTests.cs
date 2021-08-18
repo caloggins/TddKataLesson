@@ -18,6 +18,7 @@ namespace StringCalcKata
         [InlineData("1", 1)]
         [InlineData("1,2", 3)]
         [InlineData("1,2,3", 6)]
+        [InlineData("1,1001,3", 4)]
         [InlineData("1\n2,3", 6)]
         [InlineData("//;\n1;2;3", 6)]
         public void ItReturnsTheCorrectResult(string input, int expected)
