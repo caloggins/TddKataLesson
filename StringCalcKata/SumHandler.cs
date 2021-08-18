@@ -8,7 +8,8 @@ namespace StringCalcKata
         public int Handle(string input)
         {
             var numbers = Regex.Matches(input, @"\d+")
-                .Select(o => int.Parse((string) o.Value));
+                .Select(o => int.Parse(o.Value))
+                .Where(o => o <= 1000);
             return numbers.Sum();
         }
     }
