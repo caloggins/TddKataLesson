@@ -24,15 +24,16 @@ namespace StringCalcKata
             result.Should().Be(expected);
         }
 
-        [Fact]
-        public void ThrowsExceptionWhenNegativeExists()
+        [Theory]
+        [InlineData("1,-2,3", "Negative numbers not allowed. Found: -2.")]
+        public void ThrowsExceptionWhenNegativeExists(string input, string message)
         {
             var sut = new Calculator();
 
-            Action act = () => sut.Add("1,-2,3");
+            Action act = () => sut.Add(input);
 
             act.Should().Throw<NegativesNotAllowedException>()
-                .WithMessage("Negative numbers not allowed. Found: -2.");
+                .WithMessage(message);
         }
     }
 
@@ -44,7 +45,7 @@ namespace StringCalcKata
                 return 0;
 
             var match = Regex.Match(input, @"-\d+");
-            if (match.Success)
+            if (!match.Success)
                 throw new NegativesNotAllowedException($"Negative numbers not allowed. Found: {match.Value}.");
 
             var numbers = Regex.Matches(input, @"\d+")
