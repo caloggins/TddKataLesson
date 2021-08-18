@@ -45,7 +45,7 @@ namespace StringCalcKata
                 return 0;
 
             var match = Regex.Match(input, @"-\d+");
-            if (!match.Success)
+            if (match.Success)
                 throw new NegativesNotAllowedException($"Negative numbers not allowed. Found: {match.Value}.");
 
             var numbers = Regex.Matches(input, @"\d+")
