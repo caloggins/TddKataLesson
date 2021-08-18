@@ -4,8 +4,14 @@ namespace StringCalcKata
 {
     public class Calculator
     {
-        private readonly SumHandler sumHandler = new SumHandler();
-        private readonly NegativeNumberHandler negativeNumberHandler = new NegativeNumberHandler();
+        private readonly SumHandler sumHandler;
+        private readonly NegativeNumberHandler negativeNumberHandler;
+
+        public Calculator(SumHandler sumHandler, NegativeNumberHandler negativeNumberHandler)
+        {
+            this.sumHandler = sumHandler;
+            this.negativeNumberHandler = negativeNumberHandler;
+        }
         
         public int Add(string input)
         {

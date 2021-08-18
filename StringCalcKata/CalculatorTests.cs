@@ -10,7 +10,9 @@ namespace StringCalcKata
 
         public CalculatorTests()
         {
-            sut = new Calculator();
+            sut = new Calculator(
+                new SumHandler(),
+                new NegativeNumberHandler());
         }
 
         [Theory]
