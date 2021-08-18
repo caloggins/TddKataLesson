@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text.RegularExpressions;
 using FluentAssertions;
 using Xunit;
 
@@ -30,9 +31,10 @@ namespace StringCalcKata
             if (input == "")
                 return 0;
 
-            var sum = input.Split(',','\n')
-                .Select(int.Parse)
-                .Sum();
+            var numbers = Regex.Matches(input, @"\d+")
+                .Select(o => int.Parse(o.Value));
+
+            var sum = numbers.Sum();
 
             return sum;
         }
