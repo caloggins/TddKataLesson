@@ -20,7 +20,7 @@ namespace StringCalcKata
     {
         public int Add(string input)
         {
-            return -1;
+            return 0;
         }
     }
 }
