@@ -14,6 +14,16 @@ namespace StringCalcKata
             
             result.Should().Be(0);
         }
+
+        [Fact]
+        public void ItReturnsValueWhenStringContainsNumber()
+        {
+            var sut = new Calculator();
+
+            var result = sut.Add("1");
+
+            result.Should().Be(1);
+        }
     }
 
     public class Calculator
