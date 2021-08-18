@@ -3,9 +3,23 @@ using System.Text.RegularExpressions;
 
 namespace StringCalcKata
 {
-    public class NegativeNumberHandler
+    public class NegativeNumberHandler : IHandler
     {
-        public void Handle(string input)
+        private readonly IHandler successor;
+
+        public NegativeNumberHandler(IHandler successor)
+        {
+            this.successor = successor;
+        }
+        
+        public int Handle(string input)
+        {
+            ThrowExceptionWhenNegativesAreFound(input);
+
+            return successor.Handle(input);
+        }
+
+        private static void ThrowExceptionWhenNegativesAreFound(string input)
         {
             var matches = Regex.Matches(input, @"-\d+")
                 .Select(o => o.Value)

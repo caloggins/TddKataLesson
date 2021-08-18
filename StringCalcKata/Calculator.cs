@@ -1,31 +1,17 @@
-﻿using System.Collections.Generic;
-
-namespace StringCalcKata
+﻿namespace StringCalcKata
 {
     public class Calculator
     {
-        private readonly SumHandler sumHandler;
-        private readonly NegativeNumberHandler negativeNumberHandler;
+        private readonly IHandler handler;
 
-        public Calculator(SumHandler sumHandler, NegativeNumberHandler negativeNumberHandler)
+        public Calculator(IHandler handler)
         {
-            this.sumHandler = sumHandler;
-            this.negativeNumberHandler = negativeNumberHandler;
+            this.handler = handler;
         }
-        
+
         public int Add(string input)
         {
-            if (InputIsEmpty(input))
-                return 0;
-
-            negativeNumberHandler.Handle(input);
-
-            return sumHandler.Handle(input);
-        }
-        
-        private static bool InputIsEmpty(string input)
-        {
-            return input == "";
+            return handler.Handle(input);
         }
     }
 }

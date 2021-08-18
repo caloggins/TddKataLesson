@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace StringCalcKata
 {
-    public class SumHandler
+    public class SumHandler : IHandler
     {
         public int Handle(string input)
         {

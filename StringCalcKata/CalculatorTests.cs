@@ -11,8 +11,9 @@ namespace StringCalcKata
         public CalculatorTests()
         {
             sut = new Calculator(
-                new SumHandler(),
-                new NegativeNumberHandler());
+                new EmptyStringHandler(
+                    new NegativeNumberHandler(
+                        new SumHandler())));
         }
 
         [Theory]
