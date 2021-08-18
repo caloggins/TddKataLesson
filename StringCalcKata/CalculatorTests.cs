@@ -6,6 +6,13 @@ namespace StringCalcKata
 {
     public class CalculatorTests
     {
+        private readonly Calculator sut;
+
+        public CalculatorTests()
+        {
+            sut = new Calculator();
+        }
+
         [Theory]
         [InlineData("", 0)]
         [InlineData("1", 1)]
@@ -15,8 +22,6 @@ namespace StringCalcKata
         [InlineData("//;\n1;2;3", 6)]
         public void ItReturnsTheCorrectResult(string input, int expected)
         {
-            var sut = new Calculator();
-
             var result = sut.Add(input);
 
             result.Should().Be(expected);
@@ -27,8 +32,6 @@ namespace StringCalcKata
         [InlineData("1,-2,-33", "Negative numbers not allowed. Found: -2, -33.")]
         public void ThrowsExceptionWhenNegativeExists(string input, string message)
         {
-            var sut = new Calculator();
-
             Action act = () => sut.Add(input);
 
             act.Should().Throw<NegativesNotAllowedException>()
