@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using FluentAssertions;
@@ -47,12 +48,16 @@ namespace StringCalcKata
 
             CheckForNegatives(input);
 
+            var numbers = GetNumbersFromTheString(input);
+
+            return numbers.Sum();
+        }
+
+        private static IEnumerable<int> GetNumbersFromTheString(string input)
+        {
             var numbers = Regex.Matches(input, @"\d+")
                 .Select(o => int.Parse(o.Value));
-
-            var sum = numbers.Sum();
-
-            return sum;
+            return numbers;
         }
 
         private static void CheckForNegatives(string input)
