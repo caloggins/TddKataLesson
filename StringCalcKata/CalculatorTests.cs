@@ -24,6 +24,16 @@ namespace StringCalcKata
 
             result.Should().Be(1);
         }
+
+        [Fact]
+        public void ItReturnsTheSumWhenThereIsMoreThanOneNumber()
+        {
+            var sut = new Calculator();
+
+            var result = sut.Add("1,2");
+
+            result.Should().Be(3);
+        }
     }
 
     public class Calculator
