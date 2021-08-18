@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using Xunit;
 
 namespace StringCalcKata
@@ -27,10 +28,11 @@ namespace StringCalcKata
             if (input == "")
                 return 0;
 
-            if (input == "1")
-                return 1;
+            var sum = input.Split(',')
+                .Select(int.Parse)
+                .Sum();
 
-            return 3;
+            return sum;
         }
     }
 }
