@@ -12,7 +12,7 @@ namespace StringCalcKata
                 .ToList();
             var found = string.Join(", ", matches);
             if (matches.Count > 0)
-                throw new NegativesNotAllowedException($"Negative numbers not allowed. Found: {found}.");
+                throw new NegativesNotAllowedException($"Negative numbers not allowed. Found these numbers: {found}.");
         }
     }
 }
