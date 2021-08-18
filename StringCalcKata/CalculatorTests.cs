@@ -45,12 +45,7 @@ namespace StringCalcKata
             if (InputIsEmpty(input))
                 return 0;
 
-            var matches = Regex.Matches(input, @"-\d+")
-                .Select(o => o.Value)
-                .ToList();
-            var found = string.Join(", ", matches);
-            if (matches.Count > 0)
-                throw new NegativesNotAllowedException($"Negative numbers not allowed. Found: {found}.");
+            CheckForNegatives(input);
 
             var numbers = Regex.Matches(input, @"\d+")
                 .Select(o => int.Parse(o.Value));
@@ -58,6 +53,16 @@ namespace StringCalcKata
             var sum = numbers.Sum();
 
             return sum;
+        }
+
+        private static void CheckForNegatives(string input)
+        {
+            var matches = Regex.Matches(input, @"-\d+")
+                .Select(o => o.Value)
+                .ToList();
+            var found = string.Join(", ", matches);
+            if (matches.Count > 0)
+                throw new NegativesNotAllowedException($"Negative numbers not allowed. Found: {found}.");
         }
 
         private static bool InputIsEmpty(string input)
